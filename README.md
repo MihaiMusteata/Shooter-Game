@@ -3,6 +3,8 @@
 #### Jump : Space
 #### Sprint : Shift 
 #### Pause/Resume : Esc
-#### Activate cursor : E (to be able to open the inventory)
+#### Pickup : E
+#### Equip Weapon : 1,2,3,4
+#### Unequip : G
 #### Fire : Left-Click
 #### Aim : Right-Click

@@ -6,5 +6,6 @@
 #### Pickup : E
 #### Equip Weapon : 1,2,3,4
 #### Unequip : G
+#### Reload : R
 #### Fire : Left-Click
 #### Aim : Right-Click

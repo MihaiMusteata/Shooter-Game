@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletProjectile : MonoBehaviour
 {
      private Rigidbody bulletRigidbody;
+     public int damage;
 
      private void Awake()
      {
@@ -15,11 +16,16 @@ public class BulletProjectile : MonoBehaviour
           float speed = 15f;
           bulletRigidbody.velocity = transform.forward * speed;
      }
+     public void UpdateDamage(int damage)
+     {
+          this.damage = damage;
+     }
      private void OnTriggerEnter(Collider other)
      {
           if(other.GetComponent<EnemyAI>() != null)
           {
-               other.GetComponent<EnemyAI>().TakeDamage(10);
+               Debug.Log(damage);
+               other.GetComponent<EnemyAI>().TakeDamage(damage);
           }
           Destroy(gameObject);
      }

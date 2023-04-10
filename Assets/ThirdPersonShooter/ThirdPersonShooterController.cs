@@ -12,12 +12,9 @@ public class ThirdPersonShooterController : MonoBehaviour
      [SerializeField] private float normalSensivity;
      [SerializeField] private float aimSensivity;
      [SerializeField] private LayerMask aimColliderLayMask = new LayerMask();
-     [SerializeField] private Transform debugTransform;
-     [SerializeField] private Transform pfBulletProjectile;
-     [SerializeField] private Transform spawnBulletPosition;
+     [SerializeField] public Transform pfBulletProjectile;
 
-
-
+     private Vector3 mouseWorldPosition;
      private ThirdPersonController thirdPersonController;
      private StarterAssetsInputs starterAssetsInputs;
 
@@ -30,12 +27,10 @@ public class ThirdPersonShooterController : MonoBehaviour
 
      void Update()
      {
-          Vector3 mouseWorldPosition = Vector3.zero;
           Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
           Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
           if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColliderLayMask))
           {
-               debugTransform.position = raycastHit.point;
                mouseWorldPosition = raycastHit.point;
           }
           if (starterAssetsInputs.aim)
@@ -55,13 +50,17 @@ public class ThirdPersonShooterController : MonoBehaviour
                thirdPersonController.SetSensivity(normalSensivity);
                thirdPersonController.SetRotateOnMove(true);
           }
+     }
 
-          if (starterAssetsInputs.fire)
-          {
-               Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-               Instantiate(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
-               starterAssetsInputs.fire = false;
-          }
+     public void ProjectileLaunch(Transform spawnBulletPosition)
+     {
+          Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+          Instantiate(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+          starterAssetsInputs.fire = false;
+     }
 
+     public void SetProjectileDamage(int damage)
+     {
+          pfBulletProjectile.GetComponent<BulletProjectile>().UpdateDamage(damage);
      }
 }

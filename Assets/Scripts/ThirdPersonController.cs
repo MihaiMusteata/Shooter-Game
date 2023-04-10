@@ -106,7 +106,6 @@ namespace StarterAssets
           private int _animIDSpeed;
           private int _animIDGrounded;
           private int _animIDJump;
-          private int _animIDWeapon;
           private int _animIDFreeFall;
           private int _animIDMotionSpeed;
 
@@ -156,6 +155,7 @@ namespace StarterAssets
                _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
                _hasAnimator = TryGetComponent(out _animator);
+               
                _controller = GetComponent<CharacterController>();
                _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -204,11 +204,6 @@ namespace StarterAssets
                     }
                }
 
-               if (Keyboard.current.eKey.wasPressedThisFrame)
-               {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-               }
                
           }
 
@@ -246,7 +241,6 @@ namespace StarterAssets
                _animIDSpeed = Animator.StringToHash("Speed");
                _animIDGrounded = Animator.StringToHash("Grounded");
                _animIDJump = Animator.StringToHash("Jump");
-               _animIDWeapon = Animator.StringToHash("Weapon");
                _animIDFreeFall = Animator.StringToHash("FreeFall");
                _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
           }

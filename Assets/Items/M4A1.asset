@@ -9,11 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1189562573c29804dbf112afc4a185f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d920af419907d844af03db13a0e125f, type: 3}
   m_Name: M4A1
   m_EditorClassIdentifier: 
-  id: 2
   itemName: M4A1
-  damage: 20
-  ammo: 35
   icon: {fileID: 21300000, guid: d4e76db4df43ede4e809e9c08f32cdaa, type: 3}
+  prefab: {fileID: 501179753954725866, guid: 2b373a24d929fe342bfd2b002e6a5c4b, type: 3}
+  muzzleFlashParticles: {fileID: 6623623163221965550, guid: 1485c4b2659118a4cbcc9a8dfd122fd9,
+    type: 3}
+  damage: 35
+  fireRate: 0.15
+  range: 100
+  magazineSize: 25
+  storedAmmo: 75
+  weaponType: 1
+  weaponSlot: 1
